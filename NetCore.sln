@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day1", "NetCore\Day1.csproj", "{15072A8B-4638-4A34-A37E-93337B907057}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day2", "Day2\Day2.csproj", "{3E2261A5-FBD2-4E61-8E14-C08E63CB290D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day1Tests", "NetCoreTests\Day1Tests.csproj", "{698BFBE0-0085-4CC6-A963-3B96BA3E9B64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day2Tests", "Day2Tests\Day2Tests.csproj", "{8EFE5482-98A0-4B29-A6B5-0EA6E5D15362}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day2", "Day2\Day2.csproj", "{3E2261A5-FBD2-4E61-8E14-C08E63CB290D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{69438616-DC00-470A-8632-1DC80BCCCA3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day2Tests", "Day2Tests\Day2Tests.csproj", "{8EFE5482-98A0-4B29-A6B5-0EA6E5D15362}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day1", "Day1\Day1.csproj", "{6CCA15E9-B59D-4C4A-A9E2-0E3A4FF7647A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{69438616-DC00-470A-8632-1DC80BCCCA3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day1Tests", "Day1Tests\Day1Tests.csproj", "{ABD0A903-4AAF-46A9-9372-DBF59B047549}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{15072A8B-4638-4A34-A37E-93337B907057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{15072A8B-4638-4A34-A37E-93337B907057}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{15072A8B-4638-4A34-A37E-93337B907057}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{15072A8B-4638-4A34-A37E-93337B907057}.Release|Any CPU.Build.0 = Release|Any CPU
-		{698BFBE0-0085-4CC6-A963-3B96BA3E9B64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{698BFBE0-0085-4CC6-A963-3B96BA3E9B64}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{698BFBE0-0085-4CC6-A963-3B96BA3E9B64}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{698BFBE0-0085-4CC6-A963-3B96BA3E9B64}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3E2261A5-FBD2-4E61-8E14-C08E63CB290D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3E2261A5-FBD2-4E61-8E14-C08E63CB290D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E2261A5-FBD2-4E61-8E14-C08E63CB290D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +31,14 @@ Global
 		{69438616-DC00-470A-8632-1DC80BCCCA3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69438616-DC00-470A-8632-1DC80BCCCA3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69438616-DC00-470A-8632-1DC80BCCCA3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CCA15E9-B59D-4C4A-A9E2-0E3A4FF7647A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CCA15E9-B59D-4C4A-A9E2-0E3A4FF7647A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CCA15E9-B59D-4C4A-A9E2-0E3A4FF7647A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CCA15E9-B59D-4C4A-A9E2-0E3A4FF7647A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABD0A903-4AAF-46A9-9372-DBF59B047549}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABD0A903-4AAF-46A9-9372-DBF59B047549}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABD0A903-4AAF-46A9-9372-DBF59B047549}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABD0A903-4AAF-46A9-9372-DBF59B047549}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
