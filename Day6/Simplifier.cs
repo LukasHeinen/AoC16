@@ -29,17 +29,7 @@ namespace Day6
                 tuples.Add(new Tuple<char, int>(kv.Key, kv.Value));
             }
 
-            var sortedTuples = new List<Tuple<char, int>>();
-            
-
-            if (flag == false)
-            {
-                sortedTuples = tuples.OrderBy(t => t.Item2).ToList();
-            }
-            else
-            {
-                sortedTuples = tuples.OrderByDescending(t => t.Item2).ToList();
-            }
+            var sortedTuples = !flag ? tuples.OrderBy(t => t.Item2).ToList() : tuples.OrderByDescending(t => t.Item2).ToList();
             
             return sortedTuples[0].Item1;
         }
