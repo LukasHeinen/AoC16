@@ -113,25 +113,25 @@ namespace Day4
             }
 
             var orderedByCount = t.OrderByDescending(x => x.Item2).ToList();
-            var buffer = "";
+            var buffer = new StringBuilder();
             var listOfSameCount = new List<string>();
             var currentIndex = orderedByCount[0].Item2;
             foreach (var tuple in orderedByCount)
             {
                 if (tuple.Item2 == currentIndex)
                 {
-                    buffer += tuple.Item1;
+                    buffer.Append(tuple.Item1);
                 }
                 else
                 {
-                    listOfSameCount.Add(buffer);
-                    buffer = "";
+                    listOfSameCount.Add(buffer.ToString());
+                    buffer = new StringBuilder();
                     currentIndex = tuple.Item2;
-                    buffer += tuple.Item1;
+                    buffer.Append(tuple.Item1);
                 }
             }
 
-            listOfSameCount.Add(buffer);
+            listOfSameCount.Add(buffer.ToString());
             var builder = new StringBuilder();
             foreach (var s in listOfSameCount)
             {

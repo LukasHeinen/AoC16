@@ -53,7 +53,6 @@ namespace Day3
             foreach (var rawTriangle in _rawTriangles)
             {
                 var strings = rawTriangle.Split(" ");
-                var p = 0;
                 var i = new List<int>();
                 foreach (var s in strings)
                 {

@@ -62,7 +62,6 @@ namespace Day2
 
         public string GetCode(string[] sequences)
         {
-            var result = "";
             StringBuilder stringBuilder = new StringBuilder("");
             foreach (var s in sequences)
             {

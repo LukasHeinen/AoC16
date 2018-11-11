@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using Core;
+using Day4;
 
 namespace Day4
 {
-    class Program
+    public static class Program
     {
         static void Main(string[] args)
         {

@@ -7,8 +7,8 @@ namespace Day4
 {
     public class Unlocker
     {
-        private List<Room> _rooms;
-        private List<Room> _validRooms;
+        private readonly List<Room> _rooms;
+        private readonly List<Room> _validRooms;
 
         public Unlocker(string[] input)
         {
