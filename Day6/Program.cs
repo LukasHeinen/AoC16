@@ -8,7 +8,7 @@ namespace Day6
         static void Main(string[] args)
         {
             var strings = InputFileReader.ReadAllLines("Input.txt");
-            var convertedStrings = InputConverter.Convert(strings);
+            var convertedStrings = InputTransposer.Convert(strings);
 
             var simplifiedString1 = Simplifier.Simplify(convertedStrings);
             var simplifiedString2 = Simplifier.Simplify(convertedStrings, false);

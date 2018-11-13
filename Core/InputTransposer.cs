@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
 namespace Core
 {
-    public static class InputConverter
+    public static class InputTransposer
     {
         public static string[] Convert(string[] input)
         {

@@ -12,7 +12,7 @@ namespace Day6Tests
         public void Simplify_TestStringArray_ExpectedResultString()
         {
             var strings = InputFileReader.ReadAllLines("TestInput.txt");
-            var convertedStrings = InputConverter.Convert(strings);
+            var convertedStrings = InputTransposer.Convert(strings);
 
             var simplifiedString = Simplifier.Simplify(convertedStrings);
 
