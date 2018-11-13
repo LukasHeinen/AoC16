@@ -35,19 +35,19 @@ namespace Day2Tests
         {
             unlocker = new Unlocker();
 
-            var result = unlocker.GetCode(InputFileReader.ReadAllLines("TextInput.txt"));
+            var result = unlocker.GetCode("ULL,RRDDD,LURDL,UUUUD".Split(","));
 
             Assert.AreEqual("1985", result);
         }
 
-        [Test]
-        public void GetCode_TestInput2_ValidResult()
+        [TestCase("TextInput.txt", "5DB3")]
+        public void GetCode_TestInput2_ValidResult(string input, string expectedResult)
         {
             unlocker = new Unlocker(2);
 
-            var result = unlocker.GetCode(InputFileReader.ReadAllLines("TextInput.txt"));
+            var result = unlocker.GetCode("ULL,RRDDD,LURDL,UUUUD".Split(","));
 
-            Assert.AreEqual("5DB3", result);
+            Assert.AreEqual(expectedResult, result);
         }
 
         private void TestSequence(string sequence, int expectedResult)
