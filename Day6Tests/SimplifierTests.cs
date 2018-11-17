@@ -11,7 +11,7 @@ namespace Day6Tests
         [Test]
         public void Simplify_TestStringArray_ExpectedResultString()
         {
-            var strings = InputFileReader.ReadAllLines("TestInput.txt");
+            var strings = "eedadn,drvtee,eandsr,raavrd,atevrs,tsrnev,sdttsa,rasrtv,nssdts,ntnada,svetve,tesnvt,vntsnd,vrdear,dvrsen,enarar".Split(",");
             var convertedStrings = InputTransposer.Convert(strings);
 
             var simplifiedString = Simplifier.Simplify(convertedStrings);
