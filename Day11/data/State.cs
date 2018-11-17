@@ -110,15 +110,5 @@ namespace Day11.data
 
             return count;
         }
-
-        public bool IsValid()
-        {
-            for (var i = 0; i < Floors.Count; i++)
-            {
-                if (!Floors[i].IsValid()) return false;
-            }
-
-            return true;
-        }
     }
 }
