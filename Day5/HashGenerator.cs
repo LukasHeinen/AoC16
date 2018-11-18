@@ -33,5 +33,19 @@ namespace Day5
             output = builder.ToString();
             return true;
         }
+
+        public string ComputeFullHash(string input)
+        {
+            var inputBytes = Encoding.ASCII.GetBytes(input);
+            var hashBytes = _hashGenerator.ComputeHash(inputBytes);
+
+            var builder = new StringBuilder();
+            foreach (var hashByte in hashBytes)
+            {
+                builder.Append(hashByte.ToString("X2"));
+            }
+           
+            return builder.ToString();
+        }
     }
 }
