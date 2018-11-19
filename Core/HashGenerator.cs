@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace Day5
+namespace Core
 {
     public class HashGenerator
     {
@@ -14,7 +12,7 @@ namespace Day5
         }
         public bool ComputeHash(string input, out string output)
         {
-            
+
             var inputBytes = Encoding.ASCII.GetBytes(input);
             var hashBytes = _hashGenerator.ComputeHash(inputBytes);
 
@@ -44,7 +42,7 @@ namespace Day5
             {
                 builder.Append(hashByte.ToString("X2"));
             }
-           
+
             return builder.ToString();
         }
     }
