@@ -63,7 +63,9 @@ namespace Day17
 
             var result = listValidForPosition.Intersect(listValidForHash).ToArray();
             Array.Sort(result);
+            #pragma warning disable S1168 // Empty arrays and collections should be returned instead of null
             if (!result.Any()) return null;
+
             return result;
         }
 

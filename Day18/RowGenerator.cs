@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Runtime.Serialization;
 using System.Text;
@@ -42,10 +41,5 @@ namespace Day18
             }
             return false;
         }
-    }
-
-    public class Day18Exception : Exception
-    {
-
     }
 }
