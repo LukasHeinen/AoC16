@@ -55,6 +55,10 @@ namespace Day20
                 uint current = sortedList[idxList].Item1;
                 for (var i = idx; i < current; i++)
                 {
+                    if (count == 0)
+                    {
+                        Console.WriteLine("First: " + i);
+                    }
                     count++;
                 }
 
@@ -94,7 +98,7 @@ namespace Day20
                 count++;
             }
 
-            Console.WriteLine(count + "");
+            Console.WriteLine("Total count: " + count);
 
             Console.ReadLine();
         }
