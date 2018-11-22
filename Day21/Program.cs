@@ -8,13 +8,13 @@ namespace Day21
 {
     public static class Program
     {
+        private static bool _reverse = true;
         static void Main(string[] args)
         {
-            // var c = "abcdefgh".ToCharArray();
-            // var input = InputFileReader.ReadAllLines("Input.txt");
-            var c = "abcde".ToCharArray();
-            var input = InputFileReader.ReadAllLines("TestInput.txt");
-
+            var c = _reverse ? "fbgdceah".ToCharArray() : "abcdefgh".ToCharArray();
+            
+            var input = InputFileReader.ReadAllLines("Input.txt");
+           
 
             var operations = new List<IOperation>();
             foreach (var str in input)
@@ -31,7 +31,7 @@ namespace Day21
                         }
                         else
                         {
-                            var swap = new LetterSwap((int)s[2].ToCharArray()[0], (int)s[5].ToCharArray()[0]);
+                            var swap = new LetterSwap(s[2][0], s[5][0]);
                             operations.Add(swap);
                         }
                         break;
@@ -40,48 +40,83 @@ namespace Day21
                     {
                         if (s[1].Equals("left"))
                         {
-                            var rot = new Rotate(-int.Parse(s[2]), 0);
-                            operations.Add(rot);
+                            if (_reverse)
+                            {
+                                var rot = new Rotate(+int.Parse(s[2]), 0);
+                                operations.Add(rot);
+                            }
+                            else
+                            {
+                                var rot = new Rotate(-int.Parse(s[2]), 0);
+                                operations.Add(rot);
+                            }
+
                             break;
                         }
 
                         if (s[1].Equals("right"))
                         {
-                            var rot = new Rotate(-int.Parse(s[2]), 0);
-                            operations.Add(rot);
+                            if (_reverse)
+                            {
+                                var rot = new Rotate(-int.Parse(s[2]), 0);
+                                operations.Add(rot);
+                            }
+                            else
+                            {
+                                var rot = new Rotate(+int.Parse(s[2]), 0);
+                                operations.Add(rot);
+                            }
                             break;
                         }
-
+                        
                         var pos = s[6][0];
-                        var rot1 = new Rotate(pos, pos);
+                        var rot1 = new Rotate(pos, pos, _reverse);
                         operations.Add(rot1);
                         break;
 
                     }
-                    case "reverse":
+                    case "_reverse":
                     {
-                        var rev = new Reverse();
+                        var rev = new Reverse(int.Parse(s[2]), int.Parse(s[4]));
                         operations.Add(rev);
                         break;
                     }
                     case "move":
                     {
-                        var mov = new Move(int.Parse(s[2]), int.Parse(s[5]));
-                        operations.Add(mov);
+                        if (_reverse)
+                        {
+                            var mov = new Move(int.Parse(s[5]), int.Parse(s[2]));
+                            operations.Add(mov);
+                            }
+                        else
+                        {
+                            var mov = new Move(int.Parse(s[2]), int.Parse(s[5]));
+                            operations.Add(mov);
+                            }
+                        
                         break;
                     }
                 }
             }
 
-            foreach (var operation in operations)
+            if (_reverse)
             {
-                operation.Do(ref c);
+                for (var i = 0; i < operations.Count; i++)
+                {
+                    operations[operations.Count-1-i].Do(ref c);
+                }
+            }
+            else
+            {
+                foreach (var operation in operations)
+                {
+                    operation.Do(ref c);
+                }
             }
 
+            
             Console.WriteLine(c);
             Console.ReadLine();
-
-
         }
     }
 
@@ -90,10 +125,10 @@ namespace Day21
         void Do(ref char[] c);
     }
 
-    class PosSwap : IOperation
+    public class PosSwap : IOperation
     {
-        private int _x;
-        private int _y;
+        private readonly int _x;
+        private readonly int _y;
         public PosSwap(int x, int y)
         {
             _x = x;
@@ -108,29 +143,63 @@ namespace Day21
         }
     }
 
-    class Rotate : IOperation
+    public class Rotate : IOperation
     {
         private int _x;
         private int _y;
-        public Rotate(int x, int y)
+        private readonly bool _reverse;
+        private bool _addition = false;
+
+        public Rotate(int x, int y, bool reverse = false)
         {
+
             _x = x;
             _y = y;
+            _reverse = reverse;
         }
+
         public void Do(ref char[] c)
         {
             var newC = new char[c.Length];
             if (_y != 0)
             {
-                _y = c.ToList().IndexOf((char) _y);
-
-                for (var i = 0; i < c.Length; i++)
+                if (_reverse)
                 {
-                    newC[(i + 1) % newC.Length] = c[i].ToString()[0];
+                    _y = c.ToList().IndexOf((char) _y);
+                    if (_y == 1) _y = 5;
+                    else if (_y == 3) _y = 4; 
+                    else if (_y == 7) _y = 3; 
+                    else if (_y == 5)
+                    {
+                        _y = 3;
+                        _addition = true;
+                    } 
+                    else if (_y == 2) _y = 1; 
+                    else if (_y == 4) _y = 0; 
+                    else if (_y == 6) _y = 6; 
+                    else if (_y == 0) _y = 5; 
+                }
+                else
+                {
+                    _y = c.ToList().IndexOf((char)_y);
                 }
 
-                Array.Copy(c, newC, c.Length);
+                    _x = _y;
 
+                    for (var i = 0; i < c.Length; i++)
+                    {
+                        newC[(i + 1) % newC.Length] = c[i].ToString()[0];
+                    }
+                Array.Copy(newC, c, c.Length);
+                if (_addition)
+                {
+                    for (var i = 0; i < c.Length; i++)
+                    {
+                        newC[(i + 1) % newC.Length] = c[i].ToString()[0];
+                    }
+                }
+                
+                Array.Copy(newC, c, c.Length);
             }
             
             for (var i = 0; i < c.Length; i++)
@@ -156,22 +225,30 @@ namespace Day21
         }
     }
 
-    class Reverse : IOperation
+    public class Reverse : IOperation
     {
+        private readonly int _x;
+        private readonly int _y;
+
+        public Reverse(int x, int y)
+        {
+            _x = x;
+            _y = y;
+        }
         public void Do(ref char[] c)
         {
             var newC = c.ToList();
-            for (var i = 0; i < c.Length; i++)
+            for (var i = 0; i <= _y-_x; i++)
             {
-                c[i] = newC[newC.Count - 1 - i].ToString()[0];
+                c[i+_x] = newC[_y - i].ToString()[0];
             }
         }
     }
 
-    class Move : IOperation
+    public class Move : IOperation
     {
-        private int _x;
-        private int _y;
+        private readonly int _x;
+        private readonly int _y;
         public Move(int x, int y)
         {
             _x = x;
@@ -189,10 +266,10 @@ namespace Day21
         }
     }
 
-    class LetterSwap : IOperation
+    public class LetterSwap : IOperation
     {
-        private int _x;
-        private int _y;
+        private readonly int _x;
+        private readonly int _y;
         public LetterSwap(int x, int y)
         {
             _x = x;
